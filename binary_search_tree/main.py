@@ -11,14 +11,23 @@ if __name__ == '__main__':
 
     binary_search_tree = Binary_Search_Tree()
 
-    binary_search_tree.insert(1)
+    binary_search_tree.insert(10)
     binary_search_tree.insert(2)
+    binary_search_tree.insert(5)
+    binary_search_tree.insert(9)
+    binary_search_tree.insert(25)
     binary_search_tree.insert(3)
+    binary_search_tree.insert(20)
+    binary_search_tree.insert(4)
+
+    binary_search_tree.traverse()
+
+    print("Max Node: ", binary_search_tree.getMaxNode())
+    print("Min Node: ", binary_search_tree.getMinNode())
+
+    binary_search_tree.printNode(binary_search_tree.root)
+
+    binary_search_tree.printNode(binary_search_tree.root.left_node)
 
 
-    binary_search_tree.treeSize()
-
-    binary_search_tree.treeList()
-
-    binary_search_tree.inOrderTraversal()
 

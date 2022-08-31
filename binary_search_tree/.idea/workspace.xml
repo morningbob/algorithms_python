@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45aa2e5a-5feb-422c-9cba-9cdacfa52425" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Queue/Queue.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Binary_Search_Tree.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Node.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pythonProject/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../stack/Stack.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Binary_Search_Tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/Binary_Search_Tree.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
