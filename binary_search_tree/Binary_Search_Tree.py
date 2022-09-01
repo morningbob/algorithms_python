@@ -33,6 +33,7 @@ class Binary_Search_Tree:
 
     def remove(self, data):
         if self.root:
+            print("remove", "root is not null")
             self.removeNode(data, self.root)
 
     def removeNode(self, data, node):
@@ -44,50 +45,60 @@ class Binary_Search_Tree:
             # switch nodes
             # update left_node right_node
         if node.data > data:
+            print("node ", node.data, "is greater than the data", data)
             self.removeNode(data, node.left_node)
         elif node.data < data:
+            print("node ", node.data, "is smaller than the data", data)
             self.removeNode(data, node.right_node)
         elif node.data == data:
+            print("the node ", node.data, " == ", "data", data)
             # case that the node is a leaf node with no child
             if node.left_node is None and node.right_node is None:
-                if node.parent.right_node == node:
+                print("felt into leaf node case")
+                if node.parent and node.parent.right_node == node:
                     node.parent.right_node = None
-                elif node.parent.left_node == node:
+                elif node.parent and node.parent.left_node == node:
                     node.parent.left_node = None
+                elif node.parent is None:
+                    self.root = None
+
+                del node
             # case that the node to be removed has only 1 left child
             elif node.left_node is not None and node.right_node is None:
+                print("node ", node.data, "left node is not null")
                 # update the parent node's left node to the child
-                node.parent = node.left_node
+                if node.parent.left_node == node:
+                    node.parent.left_node = node.left_node
+                if node.parent.right_node == node:
+                    node.parent.right_node = node.left_node
                 # update the child's parent node to the parent
                 node.left_node.parent = node.parent
+                del node
             # case that the node to be removed has only 1 right child
             elif node.right_node is not None and node.left_node is None:
+                print("node ", node.data, "right node is not null")
                 # update the parent node's right node to the child
-                node.parent = node.right_node
+                if node.parent and node.parent.left_node == node:
+                    node.parent.left_node = node.right_node
+                if node.parent and node.parent.right_node == node:
+                    node.parent.right_node = node.right_node
                 # update the child's parent node to the parent
                 node.right_node.parent = node.parent
+                del node
             elif node.left_node is not None and node.right_node is not None:
+                print("node ", node.data, "both nodes are not null")
                 # get predecessor - get the largest node in the left subtree
-                predecessorNode = self.getPredecessor(node)
+                predecessorNode = self.getPredecessor(node.left_node)
+                print("predecessor node ", predecessorNode.data)
                 # switch the node to be removed with the predecessorNode
-                # update the left_node and right_node and parent of the nodes
-                # around the nodes
-                # update the node's parent node left or right_node
-                rootNodeToSwitch = self.root
-                if node.parent.left_node == node:
-                    node.parent.left_node = rootNodeToSwitch
-                elif node.parent.right_node == node:
-                    node.parent.right_node = rootNodeToSwitch
-                # update the node's child node's parent field
-                node.left_node.parent = rootNodeToSwitch
-                node.right_node.parent = rootNodeToSwitch
+                # we can just switch the content of the nodes
+                # in this case, is the data
 
-                # update the child of root node
+                tempNodeData = node.data
+                node.data = predecessorNode.data
+                predecessorNode.data = tempNodeData
 
-
-
-
-
+                self.removeNode(data, predecessorNode)
 
 
     def traverse(self):
@@ -140,6 +151,11 @@ class Binary_Search_Tree:
             print("Node ", node.data, " - right node", node.right_node.data)
 
     # we need to get predecessor to switch the node to be removed with root node
+    # the predecessor is the largest node of the left subtree
     def getPredecessor(self, node):
-        return False
+        if node.right_node is not None:
+            return self.getPredecessor(node.right_node)
+
+        return node
+
 
