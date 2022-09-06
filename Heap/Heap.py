@@ -66,7 +66,6 @@ class Heap:
         # check if the children of the node is greater than the parent
         while largest_index != None:
             print("checking validity", "largest index", largest_index)
-            #self.print_heap()
             largest_index = self.heapify_to_child(largest_index)
 
 
