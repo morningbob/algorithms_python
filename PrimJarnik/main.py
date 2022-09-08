@@ -1,0 +1,68 @@
+from PrimJarnik import Node, Edge, Prim_Jarnik
+
+if __name__ == '__main__':
+    vertexA = Node("A")
+    vertexB = Node("B")
+    vertexC = Node("C")
+    vertexD = Node("D")
+    vertexE = Node("E")
+    vertexF = Node("F")
+    vertexG = Node("G")
+
+    # dealing with undirected edges
+    # undirected edge = directed edge (u,v) + directed edge (v,u)
+    edgeAB = Edge(2, vertexA, vertexB)
+    edgeBA = Edge(2, vertexB, vertexA)
+    edgeAE = Edge(5, vertexA, vertexE)
+    edgeEA = Edge(5, vertexE, vertexA)
+    edgeAC = Edge(6, vertexA, vertexC)
+    edgeCA = Edge(6, vertexC, vertexA)
+    edgeAF = Edge(10, vertexA, vertexF)
+    edgeFA = Edge(10, vertexF, vertexA)
+    edgeBE = Edge(3, vertexB, vertexE)
+    edgeEB = Edge(3, vertexE, vertexB)
+    edgeBD = Edge(3, vertexB, vertexD)
+    edgeDB = Edge(3, vertexD, vertexB)
+    edgeCD = Edge(1, vertexC, vertexD)
+    edgeDC = Edge(1, vertexD, vertexC)
+    edgeCF = Edge(2, vertexC, vertexF)
+    edgeFC = Edge(2, vertexF, vertexC)
+    edgeDE = Edge(4, vertexD, vertexE)
+    edgeED = Edge(4, vertexE, vertexD)
+    edgeDG = Edge(5, vertexD, vertexG)
+    edgeGD = Edge(5, vertexG, vertexD)
+    edgeFG = Edge(5, vertexF, vertexG)
+    edgeGF = Edge(5, vertexG, vertexF)
+
+    unvisited_list = [vertexA, vertexB, vertexC, vertexD, vertexE, vertexF, vertexG]
+
+    vertexA.adj_list.append(edgeAB)
+    vertexA.adj_list.append(edgeAC)
+    vertexA.adj_list.append(edgeAE)
+    vertexA.adj_list.append(edgeAF)
+    vertexB.adj_list.append(edgeBA)
+    vertexB.adj_list.append(edgeBD)
+    vertexB.adj_list.append(edgeBE)
+    vertexC.adj_list.append(edgeCA)
+    vertexC.adj_list.append(edgeCD)
+    vertexC.adj_list.append(edgeCF)
+    vertexD.adj_list.append(edgeDB)
+    vertexD.adj_list.append(edgeDC)
+    vertexD.adj_list.append(edgeDE)
+    vertexD.adj_list.append(edgeDG)
+    vertexE.adj_list.append(edgeEA)
+    vertexE.adj_list.append(edgeEB)
+    vertexE.adj_list.append(edgeED)
+    vertexF.adj_list.append(edgeFA)
+    vertexF.adj_list.append(edgeFC)
+    vertexF.adj_list.append(edgeFG)
+    vertexG.adj_list.append(edgeGD)
+    vertexG.adj_list.append(edgeGF)
+
+
+    pj = Prim_Jarnik(unvisited_list)
+    result, cost = pj.find_minimum_spanning_tree(vertexD)
+    for edge in result:
+        print("edge", edge.start_vertex.name, edge.end_vertex.name, edge.weight)
+
+    print("total cost", cost)
